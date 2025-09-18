@@ -1,0 +1,507 @@
+:root {
+    --mainColor: #e4c590;
+    --bgColor1: #0e0d0c;
+    --bgColor2: #171819;
+    --color1: #a7a7a7;
+    --number-duration: 1.5s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Forum";
+}
+
+.main-color {
+    color: var(--mainColor);
+}
+
+.main-color-line {
+    cursor: pointer;
+    width: max-content;
+    margin: auto;
+    position: relative;
+    text-decoration: none;
+}
+
+.main-color-line::after {
+    content: "";
+    width: 0%;
+    height: 4px;
+    position: absolute;
+    bottom: -25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    border: 0px solid transparent;
+    border-top-color: var(--mainColor);
+    border-bottom-color: var(--mainColor);
+    transition-duration: 0.5s;
+}
+
+.main-color-line:hover::after {
+    width: 100%;
+    border-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.main-bg {
+    background-color: var(--bgColor2);
+    background-image: url("../images/bg.png");
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.main-btn {
+    text-decoration: none;
+    padding: 15px 40px;
+    background-color: transparent;
+    color: var(--mainColor);
+    border: 2px solid var(--mainColor);
+    border-radius: 5px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    transition-duration: .5s;
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    display: block;
+    cursor: pointer;
+}
+
+.main-btn::before {
+    content: "";
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    display: block;
+    background-color: var(--mainColor);
+    transition-duration: .5s;
+}
+
+.main-btn::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    display: block;
+    background-color: var(--mainColor);
+    transition-duration: .5s;
+}
+
+.main-btn:hover::before {
+    top: 0;
+}
+
+.main-btn:hover::after {
+    bottom: 0;
+}
+
+.main-btn span {
+    position: relative;
+    z-index: 4;
+}
+
+.main-btn:hover {
+    color: #000;
+}
+
+.title h6 {
+    letter-spacing: 1.5px;
+}
+
+.title img {
+    width: 100px;
+}
+
+section:nth-of-type(odd) {
+    background-color: var(--bgColor1);
+    background-image: url("../images/bg.png");
+    background-position: center;
+    background-repeat: repeat;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--bgColor2);
+}
+
+/* Loading */
+
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--mainColor);
+    z-index: 100000000000000000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading .circle-rotate {
+    width: 115px;
+    height: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation-name: rotate-Cube;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.loading .circle-rotate .circle {
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    border: 3px solid #fff;
+    position: relative;
+}
+
+.loading .circle-rotate .circle-top {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    border: 3px solid transparent;
+    border-top-color: #000;
+}
+
+.loading .text {
+    position: relative;
+    width: 310px;
+    height: 130px;
+}
+
+.loading .text>span {
+    font-size: 85px;
+    font-weight: 400;
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
+    color: transparent;
+}
+
+.loading .text span.show {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading .text>span.dance {
+    color: #000;
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading .text>span.dance span {
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    animation-name: LoadingText;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform: rotateY(90deg);
+}
+
+.loading .text>span.dance span:nth-of-type(2) {
+    animation-delay: .2s;
+}
+
+.loading .text>span.dance span:nth-of-type(3) {
+    animation-delay: .4s;
+}
+
+.loading .text>span.dance span:nth-of-type(4) {
+    animation-delay: .6s;
+}
+
+.loading .text>span.dance span:nth-of-type(5) {
+    animation-delay: .8s;
+}
+
+.loading .text>span.dance span:nth-of-type(6) {
+    animation-delay: 1s;
+}
+
+/*! popups */
+
+.popup {
+    position: fixed;
+    top: 0;
+    background-color: rgba(228, 197, 144, 0.50);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    opacity: 0;
+    transition-duration: 1s;
+    overflow-y: auto;
+}
+
+.popup.active {
+    z-index: 200;
+    opacity: 1;
+}
+
+.popup .box {
+    position: relative;
+    top: -150%;
+    margin: 30px 0;
+    width: 600px;
+    height: max-content;
+    background-color: var(--bgColor2);
+    opacity: 1;
+    border-radius: 10px;
+    transition-duration: 1s;
+}
+
+.popup.active .box {
+    top: 0;
+}
+
+.popup .box>i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup[data-popup-name="nav"] {
+    justify-content: flex-start;
+}
+
+.popup[data-popup-name="nav"] .box {
+    width: 400px;
+    height: max-content;
+    background-color: var(--bgColor1);
+    margin: 0;
+    top: 0;
+    left: -100%;
+    border-radius: 0;
+}
+
+.popup[data-popup-name="nav"].active .box {
+    left: 0;
+}
+
+.popup[data-popup-name="nav"] .box .header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.popup[data-popup-name="nav"] .box .header img:nth-of-type(2) {
+    width: 150px;
+    height: 150px;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar hr {
+    height: 1px;
+    opacity: 0.8;
+    margin-block: 0px;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .navSidebar {
+    padding-block: 10px;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .linkNavSidebar {
+    text-decoration: none;
+    color: #fff;
+    transition-duration: 0.5s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .cube {
+    width: 10px;
+    height: 10px;
+    display: block;
+    border: 2px solid var(--mainColor);
+    display: none;
+    margin-right: 10px;
+    animation-name: rotate-Cube;
+    animation-timing-function: linear;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .linkNavSidebar.active .cube {
+    display: block;
+}
+
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .linkNavSidebar.active,
+.popup[data-popup-name="nav"] .box .body ul.listSideBar .linkNavSidebar:hover {
+    color: var(--mainColor);
+
+}
+
+.popup[data-popup-name="nav"] .box .body>p {
+    color: var(--color1);
+}
+
+.popup[data-popup-name="nav"] .box .body>.cube {
+    width: 10px;
+    height: 10px;
+    display: block;
+    border: 2px solid var(--mainColor);
+    margin: 20px auto;
+    animation-name: rotate-Cube;
+    animation-timing-function: linear;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+.popup[data-popup-name="nav"] .box .body strong {
+    font-size: 18px;
+    letter-spacing: .5px;
+}
+
+.popup[data-popup-name="nav"] .box .body>a.phone {
+    font-size: 30px;
+}
+
+/* popup reservation*/
+.popup[data-popup-name="reservation"] .box {
+    padding: 30px 40px;
+}
+
+.popup[data-popup-name="reservation"] .box h6 {
+    letter-spacing: 2px;
+}
+
+.popup[data-popup-name="reservation"] .box>img {
+    width: 100px;
+}
+
+.popup[data-popup-name="reservation"] .box p {
+    color: var(--color1);
+}
+
+.popup[data-popup-name="reservation"] .box input,
+.popup[data-popup-name="reservation"] .box textarea {
+    color: var(--color1);
+    border: 1px solid var(--color1);
+    background-color: transparent;
+    padding: 8px 16px;
+    resize: none;
+}
+
+.popup[data-popup-name="reservation"] .box input::placeholder,
+.popup[data-popup-name="reservation"] .box textarea::placeholder {
+    color: var(--color1);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+
+}
+
+.popup[data-popup-name="reservation"] .box input:focus,
+.popup[data-popup-name="reservation"] .box textarea:focus {
+    box-shadow: 0px 0px 0px 0.5px #fff;
+    outline: none;
+    box-sizing: content-box;
+    border: 1px solid #fff;
+}
+
+/* popup Menu */
+.popup[data-popup-name="Menu"] .box {
+    padding: 30px 40px;
+}
+
+.popup[data-popup-name="Menu"] .box h2 {
+    font-size: 40px;
+}
+
+.popup[data-popup-name="Menu"] .box .imgMenu {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.popup[data-popup-name="Menu"] .box .imgMenu p {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: var(--mainColor);
+    color: #fff;
+    padding: 10px 7px;
+    border-radius: 10px 0 0 10px;
+    font-weight: 800;
+    letter-spacing: .2px;
+}
+
+.popup[data-popup-name="Menu"] .box .imgMenu button.button-popup {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    background-color: var(--mainColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transform: rotate(45deg);
+    cursor: pointer;
+    border: none;
+
+}
+
+.popup[data-popup-name="Menu"] .box .imgMenu button.button-popup.next {
+    right: 5%;
+}
+.popup[data-popup-name="Menu"] .box .imgMenu button.button-popup.next i{
+    transform: rotate(45deg);
+}
+.popup[data-popup-name="Menu"] .box .imgMenu button.button-popup.prev {
+    left: 5%;
+}
+.popup[data-popup-name="Menu"] .box .imgMenu button.button-popup.prev i{
+    transform: rotate(-135deg);
+}
+
+.popup[data-popup-name="Menu"] .box>p {
+    color: var(--color1);
+}
