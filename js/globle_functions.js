@@ -22,8 +22,8 @@ function changeActive(that) {
 function changeCarousel(typeOfBtn) {
   if (typeOfBtn == "next") {
     let currentCarousel = document.querySelector(
-        "#Home .MA-carousel-item.active"
-      ),
+      "#Home .MA-carousel-item.active"
+    ),
       nextCarousel =
         currentCarousel.nextElementSibling ??
         document.querySelector("#Home .MA-carousel-item:first-child");
@@ -33,8 +33,8 @@ function changeCarousel(typeOfBtn) {
     updateIndicators(nextCarousel.dataset.index);
   } else if (typeOfBtn == "prev") {
     let currentCarousel = document.querySelector(
-        "#Home .MA-carousel-item.active"
-      ),
+      "#Home .MA-carousel-item.active"
+    ),
       prevCarousel =
         currentCarousel.previousElementSibling ??
         document.querySelector("#Home .MA-carousel-item:last-child");
@@ -42,15 +42,13 @@ function changeCarousel(typeOfBtn) {
     currentCarousel.classList.remove("active");
     prevCarousel.classList.add("active");
     updateIndicators(prevCarousel.dataset.index);
-  } else {
-    console.log("exit function");
   }
 }
 
 function changeCarouselIndicators(that) {
   let currentCarousel = document.querySelector(
-      "#Home .MA-carousel-item.active"
-    ),
+    "#Home .MA-carousel-item.active"
+  ),
     carouselChangeActive = document.querySelector(
       `#Home .MA-carousel-item[data-index="${that.dataset.index}"]`
     );
@@ -60,8 +58,8 @@ function changeCarouselIndicators(that) {
 
 function updateIndicators(indexOfCarousel) {
   let currentIndicatorActive = document.querySelector(
-      "#Home .MA-carousel-indicators li.active"
-    ),
+    "#Home .MA-carousel-indicators li.active"
+  ),
     newIndicatorActive = document.querySelector(
       `#Home .MA-carousel-indicators li[data-index="${indexOfCarousel}"]`
     );
@@ -71,8 +69,8 @@ function updateIndicators(indexOfCarousel) {
 
 function openPopupMenu(typeOfPopup, btn) {
   let popupMenu = document.querySelector(
-      `.popup[data-popup-name="${typeOfPopup}"`
-    ),
+    `.popup[data-popup-name="${typeOfPopup}"`
+  ),
     idOfMenu = btn.dataset.menuId,
     TypeOfMenu = btn.dataset.typeMenu,
     currentMenuItem = allMenu.filter((item) => {
@@ -124,29 +122,13 @@ function prevMenu(idOfCUrrentMenu, typeOfMenu) {
     prevMenuItem;
 
   if (typeOfMenu == "BreakFast") {
-    prevMenuItem = BreakFast.filter((item) => {
-      return idOfCUrrentMenu == BreakFast[0].id
-        ? item.id == BreakFast.length
-        : item.id == idOfCUrrentMenu - 1;
-    })[0];
+    prevMenuItem = BreakFast.filter((item) => { return idOfCUrrentMenu == BreakFast[0].id ? item.id == BreakFast.length : item.id == idOfCUrrentMenu - 1; })[0];
   } else if (typeOfMenu == "Lunch") {
-    prevMenuItem = Lunch.filter((item) => {
-      return idOfCUrrentMenu == Lunch[0].id
-        ? item.id == Lunch.length + 6
-        : item.id == idOfCUrrentMenu - 1;
-    })[0];
+    prevMenuItem = Lunch.filter((item) => { return idOfCUrrentMenu == Lunch[0].id ? item.id == Lunch.length + 6 : item.id == idOfCUrrentMenu - 1; })[0];
   } else if (typeOfMenu == "Dinner") {
-    prevMenuItem = Dinner.filter((item) => {
-      return idOfCUrrentMenu == Dinner[0].id
-        ? item.id == Dinner.length + 12
-        : item.id == idOfCUrrentMenu - 1;
-    })[0];
+    prevMenuItem = Dinner.filter((item) => { return idOfCUrrentMenu == Dinner[0].id ? item.id == Dinner.length + 12 : item.id == idOfCUrrentMenu - 1; })[0];
   } else if (typeOfMenu == "Drinks") {
-    prevMenuItem = Drinks.filter((item) => {
-      return idOfCUrrentMenu == Drinks[0].id
-        ? item.id == Drinks.length + 18
-        : item.id == idOfCUrrentMenu - 1;
-    })[0];
+    prevMenuItem = Drinks.filter((item) => { return idOfCUrrentMenu == Drinks[0].id ? item.id == Drinks.length + 18 : item.id == idOfCUrrentMenu - 1; })[0];
   }
 
   boxPopup.innerHTML = `
@@ -179,36 +161,18 @@ function prevMenu(idOfCUrrentMenu, typeOfMenu) {
 }
 
 function nextMenu(idOfCUrrentMenu, typeOfMenu) {
-  console.log(typeOfMenu);
-
   let popupMenu = document.querySelector(`.popup[data-popup-name="Menu"`),
     boxPopup = popupMenu.querySelector(".box"),
     nextMenuItem;
 
   if (typeOfMenu == "BreakFast") {
-    nextMenuItem = BreakFast.filter((item) => {
-      return idOfCUrrentMenu == BreakFast.length
-        ? item.id == BreakFast[0].id
-        : item.id == idOfCUrrentMenu + 1;
-    })[0];
+    nextMenuItem = BreakFast.filter((item) => { return idOfCUrrentMenu == BreakFast.length ? item.id == BreakFast[0].id : item.id == idOfCUrrentMenu + 1; })[0];
   } else if (typeOfMenu == "Lunch") {
-    nextMenuItem = Lunch.filter((item) => {
-      return idOfCUrrentMenu == Lunch.length + 6
-        ? item.id == Lunch[0].id
-        : item.id == idOfCUrrentMenu + 1;
-    })[0];
+    nextMenuItem = Lunch.filter((item) => { return idOfCUrrentMenu == Lunch.length + 6 ? item.id == Lunch[0].id : item.id == idOfCUrrentMenu + 1; })[0];
   } else if (typeOfMenu == "Dinner") {
-    nextMenuItem = Dinner.filter((item) => {
-      return idOfCUrrentMenu == Dinner.length + 12
-        ? item.id == Dinner[0].id
-        : item.id == idOfCUrrentMenu + 1;
-    })[0];
+    nextMenuItem = Dinner.filter((item) => { return idOfCUrrentMenu == Dinner.length + 12 ? item.id == Dinner[0].id : item.id == idOfCUrrentMenu + 1; })[0];
   } else if (typeOfMenu == "Drinks") {
-    nextMenuItem = Drinks.filter((item) => {
-      return idOfCUrrentMenu == Drinks.length + 18
-        ? item.id == Drinks[0].id
-        : item.id == idOfCUrrentMenu + 1;
-    })[0];
+    nextMenuItem = Drinks.filter((item) => { return idOfCUrrentMenu == Drinks.length + 18 ? item.id == Drinks[0].id : item.id == idOfCUrrentMenu + 1; })[0];
   }
 
   boxPopup.innerHTML = `
@@ -238,4 +202,50 @@ function nextMenu(idOfCUrrentMenu, typeOfMenu) {
             ratione maxime, impedit veniam minus dolor, magnam a.
           </p>
     `;
+}
+
+function changeContentOfMenu(typeOfMenuTime) {
+  let currentMenu = document.querySelector("#choseMenu .spacial-card");
+
+  typeOfMenuTime.forEach(function (item, index) {
+    let currentSlide = currentMenu.querySelector(`.slide:${index <= Math.ceil((typeOfMenuTime.length / 2)) - 1 ? "first-child" : "last-child"}`);
+
+    if (index == 0 || index == 3) {
+      currentSlide.innerHTML = ``;
+    }
+
+    currentSlide.innerHTML += `
+          <div class="part py-2 mb-3">
+           <div class="item ms-md-3">
+             <div class="image">
+               <div class="img"></div>
+               <div class="layout">
+                 <i
+                   class="fa-regular fa-square-plus"
+                   data-type-menu="${item.type}"
+                   data-menu-id="${item.id}"
+                   onclick="openPopupMenu('Menu' , this)"
+                 ></i>
+               </div>
+             </div>
+             <div class="content">
+               <div class="header d-block d-md-flex">
+                 <h3 class="main-color me-3 mb-0 mb-md-3">
+                   ${item.name}
+                 </h3>
+                 <div class="line-top-bottom d-none d-sm-flex"></div>
+                 <h3 class="price main-color fs-5 ms-sm-3">
+                   <span class="fs-5">$</span>${item.price}
+                 </h3>
+               </div>
+               <div class="body">
+                 <p>
+                   ${item.description}
+                 </p>
+               </div>
+             </div>
+           </div>
+         </div>
+         `;
+  });
 }
